@@ -1,0 +1,96 @@
+route_long_name,route_id,route_type,route_text_color,agency_id,route_color,route_url,route_desc,route_short_name
+ELIZABETH RIVER FERRY,090,4,,,,,Norfolk/Portsmouth ferry,090
+Denbigh Fringe,430_merged_9740079,3,,,,,Denbigh Fringe/NNTC,430
+JEFFERSON/RIVERSIDE,111_merged_9740066,3,,,,,Thomas Nelson/Riverside/Denbigh,111
+COLONIAL AVE,011,3,,,,,Downtown Norfolk/Colonial Place,011
+INDIAN RIVER ROAD,012,3,,,,,South Norfolk/TCC Virginia Beach,012
+BATTLEFIELD BLVD,014,3,,,,,Robert Hall/TCC Chesapeake/Community Service Board,014
+MILITARY HWY,015,3,,,,,Evelyn Butts/Robert Hall Boulevard,015
+BALLENTINE BLVD,018,3,,,,,Downtown Norfolk/Ballentine Boulevard,018
+LYNNHAVEN PKWY,029_merged_9740055,3,,,,,Great Neck/Pleasure House Rd/TCC Virginia Beach,029
+MAX VIRGINIA BEACH-NEWPORT NEWS EXPRESS,967_merged_9740051,3,,,,,Virginia Beach/Chesapeake/Norfolk/Newport News,967
+NEWTOWN RD,025,3,,,,,Newtown Road Station/Princess Anne/Virginia Beach Municipal Center,025
+WILLIAMSBURG,121,3,,,,,Newport News Transit Center/Williamsburg Transit Center,121
+NORTHAMPTON BLVD,027,3,,,,,Pleasure House Rd./Newtown Rd Station,027
+LITTLE CREEK ROAD,021,3,,,,,Naval Station Norfolk/Joint Expeditionary Base Little Creek,021
+VIRGINIA BEACH BLVD,020,3,,,,,Downtown Norfolk/Virginia Beach Oceanfront,020
+PRINCESS ANNE RD,023,3,,,,,Norfolk General Hospital/Military Circle/JANAF,023
+BUCKROE SHOPPING CENTER - NEWPORT NEWS SHIPYARD,403_merged_9740050,3,,,,,,403
+NEWPORT NEWS TRANSIT CENTER - OAKLAND INDUSTRIAL,414,3,,,,,NNTC/Jefferson/Oakland,414
+MAX GREENBRIAR/INDIAN RIVER/NAVAL STATION NORFOLK,922_merged_9740064,3,,,,,Chesapeake/Virginia Beach to Naval Station Norfolk,922
+MAX - NORFOLK TO NNTC,961_merged_9740083,3,,,,,Norfolk/Hampton/Newport News,961
+MAX SILVERLEAF/NEWPORT NEWS SHIPBUILDING,966_merged_9740058,3,,,,,Silverleaf/Newport News Shipbuliding,966
+LIGHT RAIL TIDE,800_merged_9740087,2,,,,,EVMC/Fort Norfolk/Newtown Road,800
+CAMPOSTELLA,013_merged_9740045,3,,,,,Downtown Norfolk/Robert Hall Boulevard/Chesapeake Crossing,013
+DENBIGH PARK AND RIDE - NEWPORT NEWS SHIPYARD,430_merged_9740057,3,,,,,,430
+WEAVER ROAD,114_merged_9740062,3,,,,,Newmarket/Downtown Hampton,114
+KECOUGHTAN,101_merged_9740071,3,,,,,Downtown Newport News/Downtown Hampton,101
+FOX HILL ROAD,115,3,,,,,Buckroe/Willow Oaks/Downtown Hampton,115
+PHOEBUS,117,3,,,,,Hampton University/V.A. Hospital,117
+THOMAS NELSON COMMUNITY COLLEGE,110,3,,,,,Downtown Hampton/Thomas Nelson,110
+JEFFERSON AVENUE,112,3,,,,,Downtown Newport News/Riverside Hospital,112
+GENERAL BOOTH BLVD,033,3,,,,,North Seashore/Virginia Beach Municipal Center,033
+ATLANTIC AVENUE TROLLEY,030,3,,,,,Seasonal Service/Atlantic Avenue,030
+AQUARIUM AND CAMPGROUND TROLLEY,031,3,,,,,Seasonal Service/Aquarium/Campground,031
+HOLLAND ROAD,036,3,,,,,Pembroke East/TCC Virginia Beach,036
+SHORE DRIVE TROLLEY,035,3,,,,,Seasonal Service/Pleasure House Road/Rudee Inlet,035
+WESLEYAN & HAYGOOD ROAD,022_merged_9740076,3,,,,,Haygood,022
+DENBIGH BOULEVARD,107_merged_9740078,3,,,,,Newport News/Warwick Boulevard/Riverside Convalescent Center,107
+MAX - VIRGINIA BEACH to NORFOLK,960_merged_9740082,3,,,,,Virginia Beach/Norfolk,960
+MAX - CHESAPEAKE SQ to NAVAL STATION,974,3,,,,,Chesapeake Square/Naval Station Norfolk,974
+GREAT NECK/LYNNHAVEN PKWY,029_merged_9740077,3,,,,,Great Neck/Pleasure House Rd/TCC Virginia Beach,029
+WARWICK/LEE HALL,108,3,,,,,Lee Hall/Patrick Henry Mall,108
+BUCKROE,109,3,,,,,Pembroke Avenue/Downtown Hampton/Buckroe,109
+HIGH ST,047,3,,,,,Downtown Portsmouth/Churchland,047
+KECOUGHTAN ROAD,101_merged_9740049,3,,,,,Downtown Newport News/Downtown Hampton,101
+PORTSMOUTH BLVD,045,3,,,,,Downtown Norfolk/Downtown Portsmouth/Victory Crossing,045
+MIDTOWN,044,3,,,,,Norfolk General Hospital/Midtown Portsmouth,044
+ARMISTEAD AVENUE,118_merged_9740046,3,,,,,Langley/Semple Farm Road,118
+CRADOCK,041,3,,,,,Downtown Portsmouth/Victory Crossing,041
+BRIARFIELD ROAD,105,3,,,,,Maple Avenue & 27th Stree/Peninsula Town Center,105
+BUCKROE SHOPPING CENTER,403_merged_9740072,3,,,,,Buckroe Shopping Center,403
+LRT TIDE MAIN LINE,800_merged_9740065,0,,,,,EVMC/Fort Norfolk/Newtown Road,800
+PATRICK HENRY MALL/TNCC,111_merged_9740088,3,,,,,Thomas Nelson/Patrick Henry Mall,111
+LYNNHAVEN MALL/TCC VB,026_merged_9740075,3,,,,,Lynnhaven Parkway/TCC Virginia Beach,026
+W. OAKS/COL.MALL,405_merged_9740069,3,,,,,NNTC / Buckroe,405
+MAX - SILVERLEAF to NAVAL STATION,919_merged_9740081,3,,,,,Virginia Beach/Naval Station Norfolk,919
+QUEEN STREET,102,3,,,,,Peninsula Town Center/Downtown Hampton,102
+BAINBRIDGE BLVD,058,3,,,,,South Norfolk/Bainbridge Boulevard,058
+SHELL RD,103,3,,,,,Downtown Newport News/Downtown Hampton,103
+GREENBRIER CIRCULATOR,055,3,,,,,Greenbrier Mall/Robert Hall,055
+DEEP CREEK,057,3,,,,,Robert Hall Boulevard/Cavalier,057
+ACADEMY PARK,050,3,,,,,Academy Park/Victory Crossing,050
+TIDEWATER DRIVE,008,3,,,,,Downtown Norfolk/Evelyn Butts,008
+MAX - VICTORY CROSSING to NAVAL STATION,973,3,,,,,Victory Crossing/Naval Station Norfolk,973
+MAX - TCC to NN SHIPYARD,972,3,,,,,TCC Virginia Beach/Newport News Shipyard,972
+MERCURY BOULEVARD,114_merged_9740084,3,,,,,Newmarket/Downtown Hampton,114
+PARKVIEW,043,3,,,,,Downtown County Street/Bart Street,043
+HAYGOOD,022_merged_9740054,3,,,,,Haygood,022
+MALLORY STREET,120_merged_9740052,3,,,,,Downtown Hampton/Mallory/Buckroe,120
+NEWSOME PARK,104,3,,,,,Marshall Avenue/Downtown Newport News/Newmarket,104
+BUCKROE/WILLOW OAKS/COLISEUM MALL - NEWPORT NEWS SHIPYARD,405_merged_9740047,3,,,,,,405
+SMITHFIELD,064,3,,,,,Smithfield/Gwaltney/Newport News Shipbuilding,064
+MAGRUDER BOULEVARD,118_merged_9740068,3,,,,,Langley/Semple Farm Road,118
+DENBIGH PARK AND RIDE - NEWPORT NEWS SHIPYARD,415_merged_9740063,3,,,,,,415
+LYNNHAVEN MALL,026_merged_9740053,3,,,,,Lynnhaven Parkway/TCC Virginia Beach,026
+MAX - SILVERLEAF - NN SHIPBUILDING,966_merged_9740080,3,,,,,Silverleaf / Newport News Shipbuliding,966
+SYE-DENBIGH FPL TO WEST AVE,415_merged_9740085,3,,,,,NNTC/Denbigh,415
+MAX NEWPORT NEWS/HAMPTON/NORFOLK,961_merged_9740061,3,,,,,Newport News/Hampton to Norfolk,961
+MAX - GREENBRIER/INDIAN RIVER,922_merged_9740086,3,,,,,Chesapeake/Virginia Beach/Naval Station Norfolk,922
+OYSTER POINT,119,3,,,,,Patrick Henry Mall/Thimble Shoals Blvd,119
+PMALL- LEE HALL,116_merged_9740070,3,,,,,Lee Hall/Patrick Henry Mall,116
+MALLORY,120_merged_9740074,3,,,,,Downtown Hampton/Mallory/Buckroe,120
+MAX - NNTC TO INDIAN RIVER PARK & RIDE,967_merged_9740073,3,,,,,Virginia Beach/Chesapeake/Norfolk/Newport News,967
+CHESAPEAKE BLVD,003,3,,,,,Downtown Norfolk/Naval Station Norfolk,003
+HAMPTON BLVD,002,3,,,,,Naval Station Norfolk/Downtown Norfolk,002
+GRANBY ST,001,3,,,,,Downtown Norfolk/Ocean View/Pembroke East,001
+WARWICK BOULEVARD,106,3,,,,,Newport News/Fort Eustis,106
+SOUTH NORFOLK,006,3,,,,,Downtown Norfolk/South Norfolk/Robert Hall Boulevard,006
+WILLOUGHBY,005,3,,,,,Willoughby/Evelyn T Butts,005
+CHURCH ST,004,3,,,,,ODU/Downtown Norfolk,004
+SEWELLS POINT ROAD,009,3,,,,,Downtown Norfolk/Sewells Point,009
+MAX VIRGINIA BEACH-NORFOLK EXPRESS,960_merged_9740060,3,,,,,Virginia Beach to Norfolk,960
+WARWICK/DENBIGH BOULEVARD,107_merged_9740056,3,,,,,Newport News/Warwick Boulevard/Riverside Convalescent Center,107
+MAX SILVERLEAF/NAVAL STATION NORFOLK,919_merged_9740059,3,,,,,Virginia Beach to Naval Station Norfolk,919
+JEFFERSON/LEE HALL,116_merged_9740048,3,,,,,Lee Hall/Patrick Henry Mall,116
+CAMPOSTELLA ROAD,013_merged_9740067,3,,,,,Downtown Norfolk/Robert Hall Boulevard/Chesapeake Crossing,013
