@@ -1,0 +1,25 @@
+.datepicker-container {
+/* Keep the date container at the top of the menu */
+position: sticky;
+top: 0;
+background-color: #4885ED;
+padding: 5px;
+margin: auto;
+}
+
+/* Default css properties */
+.hideScroll {
+/* Standard backup color */
+background: #FFFFFF;
+
+/* Add transparency if supported */
+background: #FFFFFFDD;
+
+border-radius: 5px;
+
+-ms-overflow-style: none;
+}
+
+.hideScroll::-webkit-scrollbar {
+display: none;
+}

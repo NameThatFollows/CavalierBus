@@ -189,17 +189,17 @@ class App extends Component {
             </div>
           </div>
 
-        : <div style={{
-          width: 300,
-          height: '100vh',
+        : <div className="hideScroll"
+	  style={{
+          width: '20vw',
+          height: '25vh',
           position: 'absolute',
-          top: 0,
-          left: 0,
-          background: '#FFFFFFAA',
+          bottom: 15,
+          left: 15,
           zIndex: 10,
           overflow: 'auto',
         }}>
-          <div>
+          <div className="datepicker-container">
             <DateInput
               formatDate={(date) => moment(date).format('MMMM Do, YYYY')}
               parseDate={(str) => new Date(str)}
@@ -209,25 +209,27 @@ class App extends Component {
               maxDate={moment().add(1, 'year').toDate()}
               value={this.state.today.date.toDate()} />
           </div>
-          {Object.keys(this.state.routesToShapes).map((routeID) => {
-            const route = this.state.routes[routeID];
-            return (
-              <div
-                style={{
-                  height: 40,
-                  padding: 10,
-                  lineHeight: 1,
-                }}
-                key={route.id}
-                onMouseOver={this.sidebarHover}
-                onMouseOut={this.sidebarUnhover}
-                onClick={this.sidebarClick}
-                name={route.id}
-              >
-                {route.id}: {route.name}
-              </div>
-            )
-          })}
+	  <div>
+	  {Object.keys(this.state.routesToShapes).map((routeID) => {
+	    const route = this.state.routes[routeID];
+	    return (
+	      <div
+		style={{
+		  height: 40,
+		  padding: 10,
+		  lineHeight: 1,
+		}}
+		key={route.id}
+		onMouseOver={this.sidebarHover}
+		onMouseOut={this.sidebarUnhover}
+		onClick={this.sidebarClick}
+		name={route.id}
+	      >
+		{route.id}: {route.name}
+	      </div>
+	    )
+	  })}
+	  </div>
         </div> }
 
         <div>
