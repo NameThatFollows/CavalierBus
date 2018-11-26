@@ -14,6 +14,7 @@ import shapes from './gtfs/shapes.txt';
 import routes from './gtfs/routes.txt';
 import trips from './gtfs/trips.txt';
 import calendar from './gtfs/calendar.txt';
+import stopTimes from './gtfs/stop_times.txt';
 
 const Map = ReactMapboxGl({
   accessToken: 'pk.eyJ1IjoibmFtZXRoYXRmb2xsb3dzIiwiYSI6ImNqamtrMHkxaDZpNW8zcWxmMmh0cGh6amoifQ.bFvQzRnOFe8CSQA0wJQeKQ',
@@ -217,6 +218,7 @@ class App extends Component {
                   height: 40,
                   padding: 10,
                   lineHeight: 1,
+                  background: parseInt(this.state.selectedRoute) === parseInt(routeID) ? '#FFFFFF' : '',
                 }}
                 key={route.id}
                 onMouseOver={this.sidebarHover}
@@ -235,7 +237,7 @@ class App extends Component {
             <Layer type="line" layout={lineLayout} paint={linePaint}>
               {Object.keys(this.state.routesToShapes).map((routeID, index) => {
                 for (const shapeID of Object.values(this.state.routesToShapes[routeID])) {
-                  const wowowo = this.state.shapes[shapeID];
+                  const wowowo = this.state.shapes[shapeID] ? this.state.shapes[shapeID].path : undefined;
                   return (
                     <Feature
                       properties={{routeID: routeID}}
@@ -253,7 +255,7 @@ class App extends Component {
               <Layer type="line" layout={lineLayout} paint={selectedLinePaint}>
                 {Object.values(this.state.routesToShapes[this.state.selectedRoute]).map((shapeID, index) => {
                   for (const direction of Object.values(shapeID)) {
-                    const wowowo = this.state.shapes[shapeID];
+                    const wowowo = this.state.shapes[shapeID] ? this.state.shapes[shapeID].path : undefined;
                     return (
                       <Feature key={shapeID} coordinates={wowowo} />
                     );
@@ -267,7 +269,7 @@ class App extends Component {
               <Layer type="line" layout={lineLayout} paint={hoveredLinePaint}>
                 {Object.values(this.state.routesToShapes[this.state.hoveredRoute]).map((shapeID, index) => {
                   for (const direction of Object.values(shapeID)) {
-                    const wowowo = this.state.shapes[shapeID];
+                    const wowowo = this.state.shapes[shapeID] ? this.state.shapes[shapeID].path : undefined;
                     return (
                       <Feature key={shapeID} coordinates={wowowo} />
                     );
@@ -383,11 +385,40 @@ class App extends Component {
           let rowNumber = 0;
           for (const result of results.data) {
             if (rowNumber !== 0) {
+              const lon = parseFloat(result[2]);
+              const lat = parseFloat(result[1]);
+
               if (!shapes[result[0]]) {
-                shapes[result[0]] = [];
+                shapes[result[0]] = {
+                  path: [],
+                  bottomLeft: [lon, lat],
+                  topRight: [lon, lat],
+                };
               }
 
-              shapes[result[0]].push([parseFloat(result[2]), parseFloat(result[1])]);
+              shapes[result[0]].path.push([lon, lat]);
+
+              const newBL = shapes[result[0]].bottomLeft;
+              const newTR = shapes[result[0]].topRight;
+
+              if (lon < newBL[0]) {
+                newBL[0] = lon;
+              }
+
+              if (lon > newTR[0]) {
+                newTR[0] = lon;
+              }
+
+              if (lat < newBL[1]) {
+                newBL[1] = lat;
+              }
+
+              if (lat > newTR[1]) {
+                newTR[1] = lat;
+              }
+
+              shapes[result[0]].bottomLeft = newBL;
+              shapes[result[0]].topRight = newTR;
             }
             rowNumber++;
           }
@@ -397,6 +428,32 @@ class App extends Component {
               shapes,
             };
           });
+        }
+      });
+    });
+
+    await axios.get(stopTimes).then((response) => {
+      Papa.parse(response.data, {
+        delimiter: ',',
+        complete: (results, file) => {
+          const shapes = {};
+          let rowNumber = 0;
+          // for (const result of results.data) {
+          //   if (rowNumber !== 0) {
+          //     if (!shapes[result[0]]) {
+          //       shapes[result[0]] = [];
+          //     }
+
+          //     shapes[result[0]].push([parseFloat(result[2]), parseFloat(result[1])]);
+          //   }
+          //   rowNumber++;
+          // }
+          // this.setState((prevState) => {
+          //   return {
+          //     ...prevState,
+          //     shapes,
+          //   };
+          // });
         }
       });
     });
@@ -489,8 +546,8 @@ class App extends Component {
         mapState: {
           ...prevState.mapState,
           fitBounds: [
-            route[0],
-            route[route.length - 1]
+            route.bottomLeft,
+            route.topRight,
           ],
         },
       };
