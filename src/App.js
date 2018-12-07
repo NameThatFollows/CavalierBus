@@ -3,6 +3,7 @@ import ReactMapboxGl, { Marker, Layer, Feature, Popup } from 'react-mapbox-gl';
 import Papa from 'papaparse';
 import styled from 'styled-components';
 import moment from 'moment';
+import scrollToComponent from 'react-scroll-to-component';
 import * as axios from 'axios';
 import { DateInput } from '@blueprintjs/datetime';
 import { Spinner } from '@blueprintjs/core';
@@ -17,7 +18,7 @@ import calendar from './gtfs/calendar.txt';
 import stopTimes from './gtfs/stop_times.txt';
 
 const Map = ReactMapboxGl({
-  accessToken: 'pk.eyJ1IjoibmFtZXRoYXRmb2xsb3dzIiwiYSI6ImNqamtrMHkxaDZpNW8zcWxmMmh0cGh6amoifQ.bFvQzRnOFe8CSQA0wJQeKQ',
+  accessToken: process.env.REACT_APP_MAPBOX_API_KEY,
 });
 
 const lineLayout = {
@@ -49,7 +50,7 @@ class App extends Component {
 
     this.state = {
       mapState: {
-        style: 'mapbox://styles/mapbox/streets-v9',
+        style: 'mapbox://styles/namethatfollows/cjoyt2id543lo2slit3xuqj6z',
         center: [-76.286, 36.851],
         fitBounds: [
           [-76.406, 36.861],
@@ -66,7 +67,7 @@ class App extends Component {
       calendar: {},
       routes: {},
       shapes: {},
-      stop_times: {},
+      stopTimes: {},
       stops: {},
       trips: {},
       routesToShapes: {},
@@ -77,6 +78,8 @@ class App extends Component {
       hoveredRoute: undefined,
       loading: true,
     };
+
+    this.sections = {};
 
     this.sidebarHover = this.sidebarHover.bind(this);
     this.sidebarUnhover = this.sidebarUnhover.bind(this);
@@ -113,8 +116,8 @@ class App extends Component {
             if (rowNumber !== 0) {
               stops[result[3]] = {
                 id: result[3],
-                lat: result[0],
-                lon: result[2],
+                lat: parseFloat(result[0]),
+                lon: parseFloat(result[2]),
                 name: result[4],
               }
             }
@@ -160,6 +163,8 @@ class App extends Component {
     });
 
     await this.getCalendar();
+
+    scrollToComponent(this.sections[115], { offset: 0, align: 'top', duration: 1500});
   }
 
   render() {
@@ -190,17 +195,18 @@ class App extends Component {
             </div>
           </div>
 
-        : <div style={{
-          width: 300,
-          height: '100vh',
+        : <div className="hideScroll"
+	      style={{
+          width: '20vw',
+          minWidth: '200px',
+          height: '35vh',
           position: 'absolute',
-          top: 0,
-          left: 0,
-          background: '#FFFFFFAA',
+          bottom: 15,
+          left: 15,
           zIndex: 10,
           overflow: 'auto',
         }}>
-          <div>
+          <div className="datepicker-container">
             <DateInput
               formatDate={(date) => moment(date).format('MMMM Do, YYYY')}
               parseDate={(str) => new Date(str)}
@@ -208,28 +214,36 @@ class App extends Component {
               canClearSelection={false}
               minDate={moment().toDate()}
               maxDate={moment().add(1, 'year').toDate()}
+              popoverProps={{
+                position: 'bottom',
+                minimal: true,
+              }}
               value={this.state.today.date.toDate()} />
           </div>
-          {Object.keys(this.state.routesToShapes).map((routeID) => {
-            const route = this.state.routes[routeID];
-            return (
-              <div
-                style={{
-                  height: 40,
-                  padding: 10,
-                  lineHeight: 1,
-                  background: parseInt(this.state.selectedRoute) === parseInt(routeID) ? '#FFFFFF' : '',
-                }}
-                key={route.id}
-                onMouseOver={this.sidebarHover}
-                onMouseOut={this.sidebarUnhover}
-                onClick={this.sidebarClick}
-                name={route.id}
-              >
-                {route.id}: {route.name}
-              </div>
-            )
-          })}
+          <div>
+            {Object.keys(this.state.routesToShapes).map((routeID) => {
+              const route = this.state.routes[routeID];
+              return (
+                <div
+                  style={{
+                    height: 40,
+                    padding: 10,
+                    lineHeight: 1,
+                    background: parseInt(this.state.selectedRoute) === parseInt(routeID) ? '#EEEEEE' : '',
+                    cursor: 'pointer',
+                  }}
+                  key={route.id}
+                  onMouseOver={this.sidebarHover}
+                  onMouseOut={this.sidebarUnhover}
+                  onClick={this.sidebarClick}
+                  name={route.id}
+                  ref={(section) => { this.sections[parseInt(route.id)] = section; }}
+                >
+                  {route.id}: {route.name}
+                </div>
+              )
+            })}
+          </div>
         </div> }
 
         <div>
@@ -251,9 +265,24 @@ class App extends Component {
               })}
             </Layer>
 
+            {this.state.stops ?
+              <Layer type='circle' paint={{
+                'circle-radius': 5,
+                'circle-color': '#4E52E5',
+                'circle-opacity': 0.8
+              }}
+              minZoom={13}>
+                {Object.values(this.state.stops).map((stopInfo, index) => {
+                  return (
+                    <Feature key={index} coordinates={[stopInfo.lon, stopInfo.lat]} />
+                  )
+                })}
+              </Layer> : undefined
+            }
+
+            <Layer type="line" layout={lineLayout} paint={selectedLinePaint}>
             {this.state.selectedRoute ?
-              <Layer type="line" layout={lineLayout} paint={selectedLinePaint}>
-                {Object.values(this.state.routesToShapes[this.state.selectedRoute]).map((shapeID, index) => {
+                Object.values(this.state.routesToShapes[this.state.selectedRoute]).map((shapeID, index) => {
                   for (const direction of Object.values(shapeID)) {
                     const wowowo = this.state.shapes[shapeID] ? this.state.shapes[shapeID].path : undefined;
                     return (
@@ -261,9 +290,9 @@ class App extends Component {
                     );
                   }
                 })
-              }
-              </Layer> : undefined
+               : undefined
             }
+            </Layer>
 
             {this.state.hoveredRoute ?
               <Layer type="line" layout={lineLayout} paint={hoveredLinePaint}>
@@ -436,24 +465,25 @@ class App extends Component {
       Papa.parse(response.data, {
         delimiter: ',',
         complete: (results, file) => {
-          const shapes = {};
+          const stopTimes = {};
           let rowNumber = 0;
-          // for (const result of results.data) {
-          //   if (rowNumber !== 0) {
-          //     if (!shapes[result[0]]) {
-          //       shapes[result[0]] = [];
-          //     }
+          for (const result of results.data) {
+            if (rowNumber !== 0 && result[0]) {
+              if (this.state.trips[result[0]]) {
+                stopTimes[result[0]] = {
+                  blockID: result[0],
+                }
+              }
+            }
+            rowNumber++;
+          }
 
-          //     shapes[result[0]].push([parseFloat(result[2]), parseFloat(result[1])]);
-          //   }
-          //   rowNumber++;
-          // }
-          // this.setState((prevState) => {
-          //   return {
-          //     ...prevState,
-          //     shapes,
-          //   };
-          // });
+          this.setState((prevState) => {
+            return {
+              ...prevState,
+              stopTimes,
+            };
+          });
         }
       });
     });
@@ -476,6 +506,8 @@ class App extends Component {
             ...prevState.today,
             date: moment(selectedDate),
           },
+          selectedRoute: undefined,
+          hoveredRoute: undefined,
         };
       }, async () => {
         await this.getCalendar();
@@ -494,6 +526,9 @@ class App extends Component {
 
   lineClick(event) {
     const routeID = parseInt(event.feature.properties.routeID);
+    console.log(routeID)
+    console.log(this.sections[routeID]);
+    scrollToComponent(this.sections[routeID], { offset: 0, align: 'top', duration: 1500});
     this.selectLine(routeID);
   }
 
